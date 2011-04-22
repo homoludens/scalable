@@ -1,0 +1,29 @@
+This is an introduction to solving the issue of scalability in applications
+that do network I/O (lots of network connections - not cpu scalability).
+
+It's targeted to newbies and only shows the several possible approaches
+but doesn't go too deep (there are some hard issues).
+
+Examples are done in Python since it's an easy to read language, but the paradigms
+are standard for any imperative language in the Posix environment.
+
+A typical network app is a "echo" server. It just sends back anything it
+receives from the clients.
+
+0. Naive solution
+  - see it in the interactive shell
+1. Re-factored naive
+  - now, lets test it
+2. Threads
+  - threads fail
+  - 8mb per thread stack size wastes the address space
+    http://adywicaksono.wordpress.com/2007/07/10/i-can-not-create-more-than-255-threads-on-linux-what-is-the-solutions/
+3. Event based (gevent)
+  - gevent wins - http://damjan.softver.org.mk/wiki/PythonScalability
+  - gevent has some shortcomings - but we can talk about Gevent and Grenlet later
+4. Event based (canonical select)
+  - yeah right, lets do this all the time - not!
+5. Python asyncore
+  - kind of better, reactor pattern
+
+Discuss about theses methods as used in C(libtask), Erlang, Go, Rust, Stackless ... ?
